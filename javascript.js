@@ -1,5 +1,5 @@
 /*===================
-  Version 1.8.91
+  Version 1.9.002
   Mega Menu for Squarespace 7.1 Websites
   This Code is licensed by Will-Myers.com 
   
@@ -159,7 +159,7 @@ $('[data-mega-menu]').each(function(){
 
 /*First Present At All*/
 if($('[data-mega-menu]').length) {
-  $('head').prepend('<link href="cdn.jsdelivr.net/gh/willmyethewebsiteguy/MegaMenu@1.9.001/styles.css" rel="stylesheet">');
+  $('head').prepend('<link href="https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/MegaMenu@1.9.001/styles.css" rel="stylesheet">');
 
   /*Add active Menu link Class on ClickThrough Items*/
   $(function(){
