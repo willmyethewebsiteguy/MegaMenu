@@ -135,8 +135,8 @@ function MegaMenu(link, menu, menuClone, headerLinkTrigger, clickthrough, animat
     let $headerBottom = headerJS.getBoundingClientRect().bottom;
     $headerBottom =  $headerBottom < 0 ? 0 : $headerBottom;
     let $headerHeight = headerJS.getBoundingClientRect().height;
-    thisObj.menuClone.css('--wM-headerBottom', $headerBottom + 'px');
-    thisObj.menuClone.css('--wM-headerHeight', $headerHeight + 'px');
+    thisObj.menuClone[0].style.setProperty('--wM-headerBottom', $headerBottom + 'px');
+    thisObj.menuClone[0].style.setProperty('--wM-headerHeight', $headerHeight + 'px');
   }
 }
 
