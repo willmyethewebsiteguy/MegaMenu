@@ -186,6 +186,7 @@ if($('[data-mega-menu]').length) {
     if(window.self !== window.top){
       $('[data-test="frameToolbarEdit"]', parent.document).on('click', function(){
         $('.wm-mega-menu-item').remove();
+        $('#header .footer-mega-menu').remove();
       })
     }
   })
