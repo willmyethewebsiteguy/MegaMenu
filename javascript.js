@@ -159,7 +159,7 @@ $('[data-mega-menu]').each(function(){
 
 /*First Present At All*/
 if($('[data-mega-menu]').length) {
-  $('head').prepend('<link href="https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/MegaMenu@1.9.004/styles.css" rel="stylesheet">');
+  $('head').prepend('<link href="https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/MegaMenu@1.9.005/styles.css" rel="stylesheet">');
 
   /*Add active Menu link Class on ClickThrough Items*/
   $(function(){
