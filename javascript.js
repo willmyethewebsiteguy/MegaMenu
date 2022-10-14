@@ -2,10 +2,8 @@
   Version 1.9.002
   Mega Menu for Squarespace 7.1 Websites
   This Code is licensed by Will-Myers.com 
-  
-  Updates:
-  Added up to close mega menu when clicked on again, when set on clickThrough
 ===================*/
+
 function MegaMenu(link, menu, menuClone, headerLinkTrigger, clickthrough, animation, action, showClose, mobileMenuType){
   let thisObj = this,
       $header = $('#header'),
@@ -87,20 +85,12 @@ function MegaMenu(link, menu, menuClone, headerLinkTrigger, clickthrough, animat
   let openTimer;
   /*Show on Hover*/
 
-  $(thisObj.trigger).on('click', function(e){
-    if ($('body').hasClass('wm-active-mega-menu')) {
-      $(thisObj.menuClone).removeClass('show-mega-menu');
-      $('#header .header-announcement-bar-wrapper').removeClass('mega-menu-on');
-      $(thisObj.trigger).removeClass('active-mega');
-      $('body').removeClass('wm-active-mega-menu');
-    }
-  })
-
   $(thisObj.trigger).on(thisObj.action, function(e){
     e.preventDefault();
     e.stopPropagation();
     setHeight();
-    getDeactivateTriggers()
+    getDeactivateTriggers();
+    if (thisObj.trigger.hasClass('active-mega')) return;
     openTimer = setTimeout(function(){
       hideAllMenus();
       $(thisObj.menuClone).addClass('show-mega-menu');
@@ -125,6 +115,16 @@ function MegaMenu(link, menu, menuClone, headerLinkTrigger, clickthrough, animat
     clearTimeout(openTimer);
   });
 
+  if (thisObj.action == 'click') {
+    $(thisObj.trigger).on('click', function(e){
+      if ($('body').hasClass('wm-active-mega-menu')) {
+        $(thisObj.menuClone).removeClass('show-mega-menu');
+        $('#header .header-announcement-bar-wrapper').removeClass('mega-menu-on');
+        $(thisObj.trigger).removeClass('active-mega');
+        $('body').removeClass('wm-active-mega-menu');
+      }
+    })
+  }
 
   $('#page').on('scroll resize', function(){
     hideAllMenus();
@@ -159,7 +159,7 @@ $('[data-mega-menu]').each(function(){
 
 /*First Present At All*/
 if($('[data-mega-menu]').length) {
-  $('head').prepend('<link href="https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/MegaMenu@1.9.005/styles.css" rel="stylesheet">');
+  $('head').prepend('<link href="https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/MegaMenu@1.9/styles.css" rel="stylesheet">');
 
   /*Add active Menu link Class on ClickThrough Items*/
   $(function(){
