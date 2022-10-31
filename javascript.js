@@ -181,6 +181,7 @@ if($('[data-mega-menu]').length) {
       }
     }
     loadPluginImages();
+    window.addEventListener('load', loadPluginImages);
 
   /*If in the Backend Editor*/
     if(window.self !== window.top){
