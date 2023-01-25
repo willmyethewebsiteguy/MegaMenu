@@ -144,49 +144,63 @@ button.mega-close-btn{
 }
 
 /*Mega Menu Animation*/
-.mega-animation-fade{
+.mega-animation-fade,
+.sqs-jacquard section[data-section-id].mega-animation-fade{
   opacity:0;
   visibility:hidden;
   transition:opacity .3s ease, visibility 0s linear .3s, transform .3s ease;
 }
-.mega-animation-top{
+.mega-animation-top,
+.sqs-jacquard section[data-section-id].mega-animation-top{
   opacity:0;
   visibility:hidden;
   transform:translateY(-30px);
   transition:opacity .3s ease, visibility 0s linear .3s, transform .3s ease;
 }
-.mega-animation-bottom{
+.mega-animation-bottom,
+.sqs-jacquard section[data-section-id].mega-animation-bottom{
   opacity:0;
   visibility:hidden;
   transform:translateY(30px);
   transition:opacity .3s ease, visibility 0s linear .3s, transform .3s ease;
 }
-.mega-animation-right{
+.mega-animation-right,
+.sqs-jacquard section[data-section-id].mega-animation-right{
   opacity:0;
   visibility:hidden;
   transform:translateX(30px);
   transition:opacity .3s ease, visibility 0s linear .3s, transform .3s ease;
 }
-.mega-animation-left{
+.mega-animation-left,
+.sqs-jacquard section[data-section-id].mega-animation-left{
   opacity:0;
   visibility:hidden;
   transform:translateX(-30px);
   transition:opacity .3s ease, visibility 0s linear .3s, transform .3s ease;
 }
-.wm-mega-menu-item.show-mega-menu{
+.wm-mega-menu-item.show-mega-menu,
+.sqs-jacquard section[data-section-id].wm-mega-menu-item.show-mega-menu{
   transform:translate(0px, 0px);
   opacity:1;
   visibility:visible;
 }
-.wm-mega-menu-item.show-mega-menu.mega-animation-top{
+.wm-mega-menu-item.show-mega-menu.mega-animation-fade,
+.sqs-jacquard section[data-section-id].wm-mega-menu-item.show-mega-menu.mega-animation-fade{
   transition:opacity .3s ease, visibility 0s linear 0s, transform .3s ease;
 }
-.wm-mega-menu-item.show-mega-menu.mega-animation-bottom{
+.wm-mega-menu-item.show-mega-menu.mega-animation-top,
+.sqs-jacquard section[data-section-id].wm-mega-menu-item.show-mega-menu.mega-animation-top{
   transition:opacity .3s ease, visibility 0s linear 0s, transform .3s ease;
 }
-.wm-mega-menu-item.show-mega-menu.mega-animation-right{
+.wm-mega-menu-item.show-mega-menu.mega-animation-bottom,
+.sqs-jacquard section[data-section-id].wm-mega-menu-item.show-mega-menu.mega-animation-bottom{
   transition:opacity .3s ease, visibility 0s linear 0s, transform .3s ease;
 }
-.wm-mega-menu-item.show-mega-menu.mega-animation-left{
+.wm-mega-menu-item.show-mega-menu.mega-animation-right,
+.sqs-jacquard section[data-section-id].wm-mega-menu-item.show-mega-menu.mega-animation-right{
+  transition:opacity .3s ease, visibility 0s linear 0s, transform .3s ease;
+}
+.wm-mega-menu-item.show-mega-menu.mega-animation-left,
+.sqs-jacquard section[data-section-id].wm-mega-menu-item.show-mega-menu.mega-animation-left{
   transition:opacity .3s ease, visibility 0s linear 0s, transform .3s ease;
 }
