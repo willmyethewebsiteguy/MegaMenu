@@ -60,6 +60,7 @@ body.wm-active-mega-menu{
 .wm-mega-menu-item:not(.show-mega-menu) *{
   visibility: hidden !important;
   z-index:-1;
+  transition: visibility 0s linear .3s;
 }
 
 /*Darken Background on Hover*/
@@ -146,7 +147,7 @@ button.mega-close-btn{
 .mega-animation-fade{
   opacity:0;
   visibility:hidden;
-  transition:opacity .3s ease;
+  transition:opacity .3s ease, visibility 0s linear .3s, transform .3s ease;
 }
 .mega-animation-top{
   opacity:0;
