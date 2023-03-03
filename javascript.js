@@ -14,6 +14,7 @@ function MegaMenu(link, menu, menuClone, headerLinkTrigger, clickthrough, animat
   thisObj.menuClone = menuClone;
   thisObj.menu = menu;
   thisObj.trigger = headerLinkTrigger;
+  thisObj.desktopMobileTrigger = $(`#header .header-display-mobile .header-nav [href="${link}"]`).closest('.header-nav-item'),
   thisObj.clickThrough = clickthrough;
   thisObj.animation = animation;
   thisObj.action = action;
@@ -38,6 +39,8 @@ function MegaMenu(link, menu, menuClone, headerLinkTrigger, clickthrough, animat
   });
   /*Add Class to Trigger*/
   $(thisObj.trigger).addClass('wm-mega-menu-trigger');
+  $(thisObj.desktopMobileTrigger).addClass('wm-mega-menu-trigger');
+
   $('[data-folder="root"].header-menu-nav-folder').find('a[href="' + thisObj.linkUrl + '"]').closest('.header-menu-nav-item').addClass('mobile-mega-trigger');
   
   //Add Menu to Mobile Folder
@@ -54,11 +57,20 @@ function MegaMenu(link, menu, menuClone, headerLinkTrigger, clickthrough, animat
       e.preventDefault();
       e.stopPropagation();
       window.location.href = thisObj.clickThrough;
+    });
+    $(thisObj.desktopMobileTrigger).on('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      window.location.href = thisObj.clickThrough;
     });;
+
   } else {
     $(thisObj.trigger).find('a').on('click', function(e){
       e.preventDefault();
-    });;
+    });
+    $(thisObj.desktopMobileTrigger).find('a').on('click', function(e){
+      e.preventDefault();
+    });
   }
   let $deactivateTriggers
   function getDeactivateTriggers(){
@@ -115,12 +127,51 @@ function MegaMenu(link, menu, menuClone, headerLinkTrigger, clickthrough, animat
     clearTimeout(openTimer);
   });
 
+  $(thisObj.desktopMobileTrigger).on(thisObj.action, function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    setHeight();
+    getDeactivateTriggers();
+    if (thisObj.desktopMobileTrigger.hasClass('active-mega')) return;
+    openTimer = setTimeout(function(){
+      hideAllMenus();
+      $(thisObj.menuClone).addClass('show-mega-menu');
+      $('#header .header-announcement-bar-wrapper').addClass('mega-menu-on');
+      $(thisObj.desktopMobileTrigger).addClass('active-mega');
+      $('body').addClass('wm-active-mega-menu');
+      $deactivateTriggers.on('mouseenter', function() {
+        e.preventDefault();
+        e.stopPropagation();
+        moveTimer = setTimeout(function(){
+          $(thisObj.menuClone).removeClass('show-mega-menu');
+          $('#header .header-announcement-bar-wrapper').removeClass('mega-menu-on');
+          $(thisObj.desktopMobileTrigger).removeClass('active-mega');
+          $('body').removeClass('wm-active-mega-menu');
+        }, 100);})
+        .on('mouseleave', function() {
+        clearTimeout(moveTimer);
+      });
+    }, 100);
+  })
+    .on('mouseleave', function(){
+    clearTimeout(openTimer);
+  });
+
   if (thisObj.action == 'click') {
     $(thisObj.trigger).on('click', function(e){
       if ($('body').hasClass('wm-active-mega-menu')) {
         $(thisObj.menuClone).removeClass('show-mega-menu');
         $('#header .header-announcement-bar-wrapper').removeClass('mega-menu-on');
         $(thisObj.trigger).removeClass('active-mega');
+        $('body').removeClass('wm-active-mega-menu');
+      }
+    });
+
+    $(thisObj.desktopMobileTrigger).on('click', function(e){
+      if ($('body').hasClass('wm-active-mega-menu')) {
+        $(thisObj.menuClone).removeClass('show-mega-menu');
+        $('#header .header-announcement-bar-wrapper').removeClass('mega-menu-on');
+        $(thisObj.desktopMobileTrigger).removeClass('active-mega');
         $('body').removeClass('wm-active-mega-menu');
       }
     })
