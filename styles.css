@@ -57,7 +57,7 @@ body.wm-active-mega-menu{
 .wm-mega-menu-item .sqs-block-summary-v2 .img-wrapper img, .wm-mega-menu-item .sqs-block-summary-v2 .sqs-video-wrapper img{
   opacity: 1 !important;
 }
-.wm-mega-menu-item:not(.show-mega-menu) *{
+#siteWrapper .wm-mega-menu-item:not(.show-mega-menu) *{
   visibility: hidden !important;
   z-index:-1;
   transition: visibility 0s linear .3s;
