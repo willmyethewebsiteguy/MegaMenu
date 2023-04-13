@@ -1,5 +1,5 @@
 /*===================
-  Version 1.9.002
+  Version 1
   Mega Menu for Squarespace 7.1 Websites
   This Code is licensed by Will-Myers.com 
 ===================*/
@@ -43,7 +43,7 @@ function MegaMenu(link, menu, menuClone, headerLinkTrigger, clickthrough, animat
 
   $('[data-folder="root"].header-menu-nav-folder').find('a[href="' + thisObj.linkUrl + '"]').closest('.header-menu-nav-item').addClass('mobile-mega-trigger');
   
-  //Add Menu to Mobile Folder
+  /*Add Menu to Mobile Folder*/
   if (thisObj.mobileType == 'section') {
     let mobileClone = thisObj.menu.clone(),
         folder = $('[data-folder="' + thisObj.linkUrl + '"] .header-menu-nav-folder-content');
@@ -179,6 +179,10 @@ function MegaMenu(link, menu, menuClone, headerLinkTrigger, clickthrough, animat
 
   $('#page').on('scroll resize', function(){
     hideAllMenus();
+  });
+
+  $('#header').on('transition transitionend', function(){
+    setHeight();
   });
   
   function setHeight() {
