@@ -181,9 +181,23 @@ function MegaMenu(link, menu, menuClone, headerLinkTrigger, clickthrough, animat
     hideAllMenus();
   });
 
-  $('#header').on('transition transitionend', function(){
-    setHeight();
-  });
+  /*Header Fixed Style - Scroll Back*/
+  if ($('body.tweak-fixed-header.tweak-fixed-header-style-scroll-back').length){
+      $('#header').on('transition transitionend', function(){
+        setHeight();
+      });
+      $(document).on('scroll', function(){
+        hideAllMenus();
+    });
+  }
+
+  /*Header Fixed Style - Basic*/
+  if ($('body.tweak-fixed-header.tweak-fixed-header-style-basic').length){
+    $('#header').on('transition transitionend', function(){
+      setHeight();
+    });
+  }
+
   
   function setHeight() {
     let headerJS = document.querySelector('#header');
