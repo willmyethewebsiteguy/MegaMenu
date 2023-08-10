@@ -1,5 +1,5 @@
 /*===========
- * Mega Menu 1.9
+ * Mega Menu 1.9.002
  * This Code is Licensed by Will-Myers.com 
 ============*/
 .wm-mega-menu-item{
@@ -141,6 +141,10 @@ button.mega-close-btn{
   padding-top: 10px;
   z-index:99;
   opacity:1;
+}
+
+#header .header-menu-nav-folder .has-mega-section .sqs-block-button-element {
+  color: var(--primaryButtonTextColor);
 }
 
 /*Mega Menu Animation*/
