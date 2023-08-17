@@ -254,10 +254,27 @@ if($('[data-mega-menu]').length) {
 
   /*If in the Backend Editor*/
     if(window.self !== window.top){
-      $('[data-test="frameToolbarEdit"]', parent.document).on('click', function(){
-        $('.wm-mega-menu-item').remove();
-        $('#header .footer-mega-menu').remove();
-      })
+        let observer;
+        
+        function checkClass() {
+          if (document.body.classList.contains('sqs-edit-mode-active')) {
+            $('.wm-mega-menu-item').remove();
+            $('#header .footer-mega-menu').remove();
+            observer.disconnect();
+          }
+        }
+        
+        if(window.self !== window.top){
+          // config
+          let observerConfig = {
+            attributes: true,
+            attributeFilter: ['class'],
+            subtree: false
+          };
+          
+          observer = new MutationObserver(checkClass);
+          observer.observe(document.body, observerConfig);
+        }
     }
   })
 }
