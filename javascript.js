@@ -230,6 +230,7 @@ $('[data-mega-menu]').each(function(){
 if($('[data-mega-menu]').length) {
   $('head').prepend('<link href="https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/MegaMenu@1.9/styles.css" rel="stylesheet">');
 
+
   /*Add active Menu link Class on ClickThrough Items*/
   $(function(){
     $('[data-clickthrough]').each(function(){
@@ -249,8 +250,24 @@ if($('[data-mega-menu]').length) {
         ImageLoader.load(images[i], {load: true});
       }
     }
+    function loadImageMasks() {
+      let imageMaskContainer = document.createElement('div');
+      let imageMasksInMega = document.querySelectorAll('.footer-mega-menu [data-image-mask-id]');
+      
+      imageMasksInMega.forEach(mask => {
+        imageMaskContainer.append(mask);
+      })
+      imageMaskContainer.dataset.description = "This element is meant for the Mega Menu Plugin to show image masks in the menu";
+      imageMaskContainer.classList.add('wm-image-mask-container-mega-menu');
+      imageMaskContainer.style.cssText = 'position:absolute;z-index:-1;opacity:0;height:0;overflow:hidden;'
+      
+      document.body.append(imageMaskContainer)
+    }
     loadPluginImages();
-    window.addEventListener('load', loadPluginImages);
+    window.addEventListener('load', function() {
+      loadPluginImages();
+      loadImageMasks();
+    });
 
   /*If in the Backend Editor*/
     if(window.self !== window.top){
