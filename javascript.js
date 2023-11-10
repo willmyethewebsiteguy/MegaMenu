@@ -224,6 +224,8 @@ $('[data-mega-menu]').each(function(){
   $(menu).addClass('footer-mega-menu')
   new MegaMenu(link, menu, menuClone, headerLinkTrigger, clickthrough, animation, action, showClose, mobileMenuType);
   $('body').addClass('tweak-wm-mega-menu');
+  /*Activate Shape Blocks*/
+  $(function() { Squarespace.initializePageContent(Y) });
 });
 
 /*First Present At All*/
