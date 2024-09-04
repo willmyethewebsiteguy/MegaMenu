@@ -3,7 +3,6 @@
   Mega Menu for Squarespace 7.1 Websites
   This Code is licensed by Will-Myers.com 
 ===================*/
-
 function MegaMenu(link, menu, menuClone, headerLinkTrigger, clickthrough, animation, action, showClose, mobileMenuType){
   let thisObj = this,
       $header = $('#header'),
@@ -87,7 +86,7 @@ function MegaMenu(link, menu, menuClone, headerLinkTrigger, clickthrough, animat
   });
 
   /*Function to hide All Menus*/
-  function hideAllMenus(){
+  function hideAllMenus() {
     $('.show-mega-menu').removeClass('show-mega-menu');
     $deactivateTriggers.off('mouseenter mouseleave');
     $('#header .header-announcement-bar-wrapper').removeClass('mega-menu-on'); 
@@ -97,7 +96,7 @@ function MegaMenu(link, menu, menuClone, headerLinkTrigger, clickthrough, animat
   let openTimer;
   /*Show on Hover*/
 
-  $(thisObj.trigger).on(thisObj.action, function(e){
+  $(thisObj.trigger).on(thisObj.action, function(e) {
     e.preventDefault();
     e.stopPropagation();
     setHeight();
@@ -230,8 +229,7 @@ $('[data-mega-menu]').each(function(){
 
 /*First Present At All*/
 if($('[data-mega-menu]').length) {
-  $('head').prepend('<link href="https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/MegaMenu@1.9/styles.css" rel="stylesheet">');
-
+  $('head').prepend('<link href="https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/MegaMenu@1/styles.css" rel="stylesheet">');
 
   /*Add active Menu link Class on ClickThrough Items*/
   $(function(){
@@ -246,6 +244,31 @@ if($('[data-mega-menu]').length) {
   }) 
 
   $(function(){
+  /*If in the Backend Editor*/
+
+    if(window.self !== window.top){
+        let observer;
+        
+        function checkClass() {
+          if (document.body.classList.contains('sqs-edit-mode-active')) {
+            $('.wm-mega-menu-item').remove();
+            $('#header .footer-mega-menu').remove();
+            observer.disconnect();
+          }
+        }
+        
+        if(window.self !== window.top){
+          // config
+          let observerConfig = {
+            attributes: true,
+            attributeFilter: ['class'],
+            subtree: false
+          };
+          
+          observer = new MutationObserver(checkClass);
+          observer.observe(document.body, observerConfig);
+        }
+    }
     function loadPluginImages() {
       var images = document.querySelectorAll('.wm-mega-menu-item img[data-src]' );
       for (var i = 0; i < images.length; i++) {
@@ -270,30 +293,5 @@ if($('[data-mega-menu]').length) {
       loadPluginImages();
       loadImageMasks();
     });
-
-  /*If in the Backend Editor*/
-    if(window.self !== window.top){
-        let observer;
-        
-        function checkClass() {
-          if (document.body.classList.contains('sqs-edit-mode-active')) {
-            $('.wm-mega-menu-item').remove();
-            $('#header .footer-mega-menu').remove();
-            observer.disconnect();
-          }
-        }
-        
-        if(window.self !== window.top){
-          // config
-          let observerConfig = {
-            attributes: true,
-            attributeFilter: ['class'],
-            subtree: false
-          };
-          
-          observer = new MutationObserver(checkClass);
-          observer.observe(document.body, observerConfig);
-        }
-    }
   })
 }
