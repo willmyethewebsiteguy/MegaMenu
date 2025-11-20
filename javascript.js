@@ -13,7 +13,7 @@ function MegaMenu(link, menu, menuClone, headerLinkTrigger, clickthrough, animat
   thisObj.menuClone = menuClone;
   thisObj.menu = menu;
   thisObj.trigger = headerLinkTrigger;
-  thisObj.desktopMobileTrigger = $(`#header .header-display-mobile .header-nav [href="${link}"]`).closest('.header-nav-item'),
+  thisObj.desktopMobileTrigger = $(`#header .header-display-mobile .header-nav [data-href="${link}"]`).closest('.header-nav-item'),
   thisObj.clickThrough = clickthrough;
   thisObj.animation = animation;
   thisObj.action = action;
@@ -40,7 +40,7 @@ function MegaMenu(link, menu, menuClone, headerLinkTrigger, clickthrough, animat
   $(thisObj.trigger).addClass('wm-mega-menu-trigger');
   $(thisObj.desktopMobileTrigger).addClass('wm-mega-menu-trigger');
 
-  $('[data-folder="root"].header-menu-nav-folder').find('a[href="' + thisObj.linkUrl + '"]').closest('.header-menu-nav-item').addClass('mobile-mega-trigger');
+  $('[data-folder="root"].header-menu-nav-folder').find('button[data-href="' + thisObj.linkUrl + '"]').closest('.header-menu-nav-item').addClass('mobile-mega-trigger');
   
   /*Add Menu to Mobile Folder*/
   if (thisObj.mobileType == 'section') {
@@ -213,7 +213,7 @@ $('[data-mega-menu]').each(function(){
   let link = $(this).attr('data-mega-menu'),
       menu = $(this).closest('#footer-sections .page-section'),
       menuClone = $(menu).clone().css('display', 'none'),
-      headerLinkTrigger = $('#header a[href="' + link + '"]').closest('.header-nav-item').first(),
+      headerLinkTrigger = $('#header button[data-href="' + link + '"]').closest('.header-nav-item').first(),
       mobileMenuType = $(this).attr('data-mobile-type') == 'section' ? 'section' : 'folder',
       action = typeof $(this).attr('data-action') == 'undefined' ? 'hover' : $(this).attr('data-action'),
       clickthrough = typeof $(this).attr('data-clickthrough') == "undefined" ? false : $(this).attr('data-clickthrough'),
@@ -238,7 +238,7 @@ if($('[data-mega-menu]').length) {
       let menuLink = $(this).attr('data-mega-menu');
       let clickThrough = $(this).attr('data-clickthrough');
       if (currentUrl == clickThrough) {
-        $('#header .header-display-desktop .header-nav-wrapper [href="' + menuLink + '"]').closest('.wm-mega-menu-trigger').addClass('header-nav-item--active');
+        $('#header .header-display-desktop .header-nav-wrapper [data-href="' + menuLink + '"]').closest('.wm-mega-menu-trigger').addClass('header-nav-item--active');
       }
     });
   }) 
