@@ -224,7 +224,11 @@ $('[data-mega-menu]').each(function(){
   new MegaMenu(link, menu, menuClone, headerLinkTrigger, clickthrough, animation, action, showClose, mobileMenuType);
   $('body').addClass('tweak-wm-mega-menu');
   /*Activate Shape Blocks*/
-  $(function() { Squarespace?.initializePageContent(Y) });
+  $(function() { 
+    Y.all('.wm-mega-menu-item').each(function(node) {
+      window.Squarespace.initializeLayoutBlocks(Y, node);
+    });
+  });
 });
 
 /*First Present At All*/
